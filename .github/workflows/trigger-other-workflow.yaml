@@ -20,6 +20,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.WORKFLOW_PAT }}
-          repository: username/my-repo
+          repository: aa-ericaoytas/GitHubActionsPlayground
           event-type: Update to ${{ github.event.inputs.newVersion }}
           client-payload: '{"version": "${{ github.event.inputs.newVersion }}"}'
