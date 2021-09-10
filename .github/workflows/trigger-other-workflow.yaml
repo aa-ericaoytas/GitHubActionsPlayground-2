@@ -22,4 +22,4 @@ jobs:
           token: ${{ secrets.WORKFLOW_PAT }}
           repository: aa-ericaoytas/GitHubActionsPlayground
           event-type: Update to ${{ github.event.inputs.newVersion }}
-          client-payload: '{"newVersion": "${{ github.event.inputs.newVersion }}"}'
+          client-payload: '{"actor": "$${{ github.actor }}", "newVersion": "${{ github.event.inputs.newVersion }}"}'
