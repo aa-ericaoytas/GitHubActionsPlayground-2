@@ -9,7 +9,7 @@ on:
 
 jobs:
   Update-file:
-    name: Updating version to ${{ github.event.client_payload.newVersion }}
+    name: Updating version to ${{ github.event.inputs.newVersion }}
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout Code from the repository
