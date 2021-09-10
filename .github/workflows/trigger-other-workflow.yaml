@@ -1,0 +1,25 @@
+name: Trigger other workflow in another repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      newVersion:
+        description: "New version to update to"
+        required: true
+
+jobs:
+  Update-file:
+    name: Updating version to ${{ github.event.client_payload.newVersion }}
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout Code from the repository
+        id: checkoutCode
+        uses: actions/checkout@v2
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.WORKFLOW_PAT }}
+          repository: username/my-repo
+          event-type: Update to ${{ github.event.inputs.newVersion }}
+          client-payload: '{"version": "${{ github.event.inputs.newVersion }}"}'
