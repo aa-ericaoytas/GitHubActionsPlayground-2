@@ -7,6 +7,10 @@ on:
         description: "New version to update to"
         required: true
 
+env:
+  APPLICATION_NAME: test-app
+  TARGET_ENVIRONMENT: nonprod
+
 jobs:
   Update-file:
     name: Updating version to ${{ github.event.inputs.newVersion }}
@@ -22,4 +26,4 @@ jobs:
           token: ${{ secrets.WORKFLOW_PAT }}
           repository: aa-ericaoytas/GitHubActionsPlayground
           event-type: Update to ${{ github.event.inputs.newVersion }}
-          client-payload: '{"actor": "${{ github.actor }}", "newVersion": "${{ github.event.inputs.newVersion }}"}'
+          client-payload: '{"actor": "${{ github.actor }}", "applicationName": ${{ env.APPLICATION_NAME }}", "applicationVersion": "${{ github.event.inputs.newVersion }}", "targetEnvironment": ${{ env.TARGET_ENVIRONMENT }}}'
