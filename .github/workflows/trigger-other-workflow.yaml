@@ -26,4 +26,4 @@ jobs:
           token: ${{ secrets.WORKFLOW_PAT }}
           repository: aa-ericaoytas/GitHubActionsPlayground
           event-type: Update to ${{ github.event.inputs.newVersion }}
-          client-payload: '{"actor": "${{ github.actor }}", "applicationName": ${{ env.APPLICATION_NAME }}", "applicationVersion": "${{ github.event.inputs.newVersion }}", "targetEnvironment": ${{ env.TARGET_ENVIRONMENT }}}'
+          client-payload: '{"actor": "${{ github.actor }}", "applicationName": "${{ env.APPLICATION_NAME }}", "applicationVersion": "${{ github.event.inputs.newVersion }}", "targetEnvironment": "${{ env.TARGET_ENVIRONMENT }}"}'
