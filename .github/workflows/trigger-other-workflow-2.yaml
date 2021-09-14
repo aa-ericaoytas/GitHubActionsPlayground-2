@@ -23,8 +23,8 @@ jobs:
       - name: Trigger workflow and wait
         uses: convictional/trigger-workflow-and-wait@v1.3.0
         with:
-          owner: ${{ github.actor }}
-          repo: aa-ericaoytas/GitHubActionsPlayground
+          owner: aa-ericaoytas
+          repo: GitHubActionsPlayground
           github_token: ${{ secrets.WORKFLOW_PAT }}
           workflow_file_name: update-yaml-2.yaml
           ref: release-branch
