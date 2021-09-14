@@ -1,0 +1,35 @@
+name: Trigger 2 - Trigger and wait
+
+on:
+  workflow_dispatch:
+    inputs:
+      newVersion:
+        description: "New version to update to"
+        required: true
+
+env:
+  APPLICATION_NAME: test-app
+  TARGET_ENVIRONMENT: nonprod
+
+jobs:
+  Update-file:
+    name: Updating version to ${{ github.event.inputs.newVersion }}
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout Code from the repository
+        id: checkoutCode
+        uses: actions/checkout@v2
+
+    - name: Trigger workflow and wait
+      uses: convictional/trigger-workflow-and-wait@v1.3.0
+      with:
+        owner: ${{ github.actor }}
+        repo: aa-ericaoytas/GitHubActionsPlayground
+        github_token: ${{ secrets.WORKFLOW_PAT }}
+        workflow_file_name: update-yaml-2.yaml
+        ref: release-branch
+        wait_interval: 10
+        inputs:  '{"actor": "${{ github.actor }}", "applicationName": "${{ env.APPLICATION_NAME }}", "applicationVersion": "${{ github.event.inputs.newVersion }}", "targetEnvironment": "${{ env.TARGET_ENVIRONMENT }}"}'
+        propagate_failure: false
+        trigger_workflow: true
+        wait_workflow: true
