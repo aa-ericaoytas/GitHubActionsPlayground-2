@@ -27,8 +27,8 @@ jobs:
           repo: GitHubActionsPlayground
           github_token: ${{ secrets.WORKFLOW_PAT }}
           workflow_file_name: update-yaml-2.yaml
+          ref: main
           wait_interval: 10
           inputs:  '{"actor": "${{ github.actor }}", "applicationName": "${{ env.APPLICATION_NAME }}", "applicationVersion": "${{ github.event.inputs.newVersion }}", "targetEnvironment": "${{ env.TARGET_ENVIRONMENT }}"}'
-          propagate_failure: false
           trigger_workflow: true
           wait_workflow: true
