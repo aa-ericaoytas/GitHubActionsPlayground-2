@@ -29,7 +29,7 @@ jobs:
           workflow_file_name: update-yaml.yaml
           ref: main
           wait_interval: 10
-          inputs:  '{"actor": "${{ github.actor }}", "applicationName": "${{ env.APPLICATION_NAME }}", "applicationVersion": "${{ github.event.inputs.newVersion }}", "targetEnvironment": "${{ env.TARGET_ENVIRONMENT }}"}'
+          inputs:  '{"autoFail": "true","actor": "${{ github.actor }}", "applicationName": "${{ env.APPLICATION_NAME }}", "applicationVersion": "${{ github.event.inputs.newVersion }}", "targetEnvironment": "${{ env.TARGET_ENVIRONMENT }}"}'
           trigger_workflow: true
           wait_workflow: true
           propagate_failure: true
