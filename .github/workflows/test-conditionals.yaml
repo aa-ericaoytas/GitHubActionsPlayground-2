@@ -32,7 +32,7 @@ jobs:
 
   merge:
     if: contains(github.ref, 'main') && github.event_name == 'push'
-    name: Run when PR merged
+    name: Run when PR merged 
     runs-on: ubuntu-latest
     steps:
       - name: Echo info
