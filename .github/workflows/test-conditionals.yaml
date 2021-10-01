@@ -1,0 +1,55 @@
+name: Test conditionals
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: 
+    types: [opened, synchronize, closed]
+
+env:
+  APPLICATION_NAME: test-app
+  TARGET_ENVIRONMENT: nonprod
+
+jobs:
+  close:
+    if: github.event.pull_request.closed == true
+    name: Run when PR closed
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Echo info
+        run: |
+          echo "INFO: github.event.pull_request"
+          echo "${{ github.event.pull_request }}"
+          echo "INFO: github.event_name"
+          echo "${{ github.event_name }}"
+          echo "INFO: github.ref"
+          echo "${{ github.ref }}"
+
+  merge:
+    if: github.event.pull_request.merged == true
+    name: Run when PR merged
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo info
+        run: |
+          echo "INFO: github.event.pull_request"
+          echo "${{ github.event.pull_request }}"
+          echo "INFO: github.event_name"
+          echo "${{ github.event_name }}"
+          echo "INFO: github.ref"
+          echo "${{ github.ref }}"
+
+  merge:
+    if: github.ref != 'refs/heads/main'
+    name: Run when PR is opened & synchronized
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo info
+        run: |
+          echo "INFO: github.event.pull_request"
+          echo "${{ github.event.pull_request }}"
+          echo "INFO: github.event_name"
+          echo "${{ github.event_name }}"
+          echo "INFO: github.ref"
+          echo "${{ github.ref }}"
