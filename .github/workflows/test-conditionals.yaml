@@ -42,7 +42,7 @@ jobs:
           echo "INFO: github.event_name"
           echo "${{ github.event_name }}"
           echo "INFO: github.ref"
-          echo "${{ github.ref }}"
+          echo "${{ github.ref }}" 
 
   pr-open-sync:
     if: github.ref != 'refs/heads/main' && github.event.pull_request.state == open
