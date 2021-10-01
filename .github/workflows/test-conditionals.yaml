@@ -70,6 +70,10 @@ jobs:
     steps: 
       - name: Echo info
         run: |
+          echo "INFO: github.event.pull_request.state"
+          echo "${{ github.event.pull_request.state }}"
+          echo "INFO: github.event.pull_request.merged"
+          echo "${{ github.event.pull_request.merged }}"
           echo "INFO: github.event.push"
           echo "${{ toJson(github.event.push) }}"
           echo "INFO: github.event.action"
