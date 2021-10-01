@@ -31,7 +31,7 @@ jobs:
           echo "${{ github.ref }}" 
 
   merge:
-    if: github.ref == 'main' && github.event.action == 'merge'
+    if: github.ref == 'main' && github.event.action == 'merged'
     name: Run when PR merged
     runs-on: ubuntu-latest
     steps:
