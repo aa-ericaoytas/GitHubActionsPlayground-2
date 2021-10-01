@@ -19,6 +19,8 @@ jobs:
     steps: 
       - name: Echo info
         run: |
+          echo "INFO: github.event"
+          echo "${{ toJson(github.event) }}"
           echo "INFO: github.event.pull_request.state"
           echo "${{ github.event.pull_request.state }}"
           echo "INFO: github.event.action"
@@ -37,6 +39,8 @@ jobs:
     steps:
       - name: Echo info
         run: |
+          echo "INFO: github.event"
+          echo "${{ toJson(github.event) }}"
           echo "INFO: github.event.pull_request.state"
           echo "${{ github.event.pull_request.state }}"
           echo "INFO: github.event.action"
@@ -55,6 +59,27 @@ jobs:
     steps:
       - name: Echo info
         run: |
+          echo "INFO: github.event"
+          echo "${{ toJson(github.event) }}"
+          echo "INFO: github.event.pull_request.state"
+          echo "${{ github.event.pull_request.state }}"
+          echo "INFO: github.event.action"
+          echo "${{ github.event.action }}"
+          echo "INFO: github.event.pull_request.merged"
+          echo "${{ github.event.pull_request.merged }}"
+          echo "INFO: github.event_name"
+          echo "${{ github.event_name }}"
+          echo "INFO: github.ref"
+          echo "${{ github.ref }}" 
+
+  always-run:
+    name: Run always
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Echo info
+        run: |
+          echo "INFO: github.event"
+          echo "${{ toJson(github.event) }}"
           echo "INFO: github.event.pull_request.state"
           echo "${{ github.event.pull_request.state }}"
           echo "INFO: github.event.action"
