@@ -40,7 +40,7 @@ jobs:
           echo "INFO: github.ref"
           echo "${{ github.ref }}"
 
-  merge:
+  pr-open-sync:
     if: github.ref != 'refs/heads/main'
     name: Run when PR is opened & synchronized
     runs-on: ubuntu-latest
