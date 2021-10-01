@@ -19,8 +19,8 @@ jobs:
     steps: 
       - name: Echo info
         run: |
-          echo "INFO: github.event.pull_request"
-          echo "${{ toJson(github.event.pull_request) }}"
+          echo "INFO: github.event.pull_request.state"
+          echo "${{ github.event.pull_request.state }}"
           echo "INFO: github.event.action"
           echo "${{ github.event.action }}"
           echo "INFO: github.event_name"
@@ -35,8 +35,8 @@ jobs:
     steps:
       - name: Echo info
         run: |
-          echo "INFO: github.event.pull_request"
-          echo "${{ toJson(github.event.pull_request) }}"
+          echo "INFO: github.event.pull_request.state"
+          echo "${{ github.event.pull_request.state }}"
           echo "INFO: github.event.action"
           echo "${{ github.event.action }}"
           echo "INFO: github.event_name"
@@ -51,8 +51,8 @@ jobs:
     steps:
       - name: Echo info
         run: |
-          echo "INFO: github.event.pull_request"
-          echo "${{ toJson(github.event.pull_request) }}"
+          echo "INFO: github.event.pull_request.state"
+          echo "${{ github.event.pull_request.state }}"
           echo "INFO: github.event.action"
           echo "${{ github.event.action }}"
           echo "INFO: github.event_name"
