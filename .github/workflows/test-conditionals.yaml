@@ -43,6 +43,10 @@ jobs:
           echo "${{ github.event.action }}"
           echo "INFO: github.event_name"
           echo "${{ github.event_name }}"
+          echo "INFO: github.event.pull_request.state"
+          echo "${{ github.event.pull_request.state }}"
+          echo "INFO: github.event.pull_request.merged"
+          echo "${{ github.event.pull_request.merged }}"
           echo "INFO: github.ref"
           echo "${{ github.ref }}" 
 
