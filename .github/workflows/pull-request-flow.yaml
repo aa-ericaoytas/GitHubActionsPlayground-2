@@ -16,11 +16,17 @@ jobs:
         id: checkoutCode
         uses: actions/checkout@v2
 
+      - name: Get pull request number
+        id: getPullRequestNumber
+        run: |
+          PULL_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          echo "::set-output name=pullNumber::${PULL_NUMBER}"
+
       - name: commenter
         uses: peter-evans/create-or-update-comment@v1
         with:
-          repository: AAInternal/runway
-          issue-number: ${{ github.event.inputs.prNumber }}
+          repository: aa-ericaoytas/gha-playground-app
+          issue-number: ${{ steps.getPullRequestNumber.outputs.pullNumber }}
           token: ${{ secrets.WORKFLOW_PAT }}
           body: |
             This is a test.
