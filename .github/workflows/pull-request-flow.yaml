@@ -1,4 +1,4 @@
-name: Trigger 2 - Trigger and wait
+name: Pull Request flow
 
 on:
  pull_request: 
