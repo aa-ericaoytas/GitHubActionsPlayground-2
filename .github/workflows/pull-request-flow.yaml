@@ -33,3 +33,6 @@ jobs:
             - Status: Hungry
             - URL: https://www.google.com/maps/search/google+${{ env.SEARCH_ITEM }}
             Go get some.
+
+            Copy this code
+            `mvn install`
