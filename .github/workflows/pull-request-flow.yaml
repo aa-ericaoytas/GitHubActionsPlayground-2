@@ -31,7 +31,7 @@ jobs:
           workflow_file_name: commenter.yaml
           ref: main
           wait_interval: 10
-          inputs: '{"pullNumber": "${{ needs.set-up.outputs.pullNumber }}", 
+          inputs: '{"pullNumber": "${{ steps.getPullRequestNumber.outputs.pullNumber }}", 
                     "searchItem": "${{ env.SEARCH_ITEM }}",
                     "sourceRepository": "${{ github.repository }}"}'
           trigger_workflow: true
