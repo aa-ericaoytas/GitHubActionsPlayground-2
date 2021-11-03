@@ -8,22 +8,32 @@ env:
   SEARCH_ITEM: sushi
 
 jobs:
-  Update-file:
-    name: Updating version to ${{ github.event.inputs.newVersion }}
+  test:
+    name: Test workflow
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout Code from the repository
         id: checkoutCode
         uses: actions/checkout@v2
 
-      - name: commenter
-        uses: peter-evans/create-or-update-comment@v1
+      - name: Get pull request number
+        id: getPullRequestNumber
+        run: |
+          PULL_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          echo "::set-output name=pullNumber::${PULL_NUMBER}"
+
+      - name: Trigger workflow and wait
+        uses: convictional/trigger-workflow-and-wait@v1.3.0
         with:
-          repository: AAInternal/runway
-          issue-number: ${{ github.event.inputs.prNumber }}
-          token: ${{ secrets.WORKFLOW_PAT }}
-          body: |
-            This is a test.
-            - Status: Hungry
-            - URL: https://www.google.com/maps/search/google+${{ env.SEARCH_ITEM }}
-            Go get some.
+          owner: aa-ericaoytas
+          repo: gha-playground-deploy
+          github_token: ${{ secrets.WORKFLOW_PAT }}
+          workflow_file_name: commenter.yaml
+          ref: main
+          wait_interval: 10
+          inputs: '{"pullNumber": "${{ steps.getPullRequestNumber.outputs.pullNumber }}", 
+                    "searchItem": "${{ env.SEARCH_ITEM }}",
+                    "sourceRepository": "${{ github.repository }}"}'
+          trigger_workflow: true
+          wait_workflow: true
+          propagate_failure: true
