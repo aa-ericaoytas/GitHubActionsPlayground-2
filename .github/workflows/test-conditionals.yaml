@@ -42,7 +42,7 @@ jobs:
           echo "INFO: github.event.action"
           echo "${{ github.event.action }}"
           echo "INFO: github.event_name"
-          echo "${{ github.event_name }}"
+          echo "${{ github.event_name }}" 
           echo "INFO: github.ref"
           echo "${{ github.ref }}" 
 
