@@ -13,7 +13,7 @@ env:
 
 jobs:
   close:
-    if: contains(github.ref, 'main') != 'true' && github.event.pull_request.state == 'closed'
+    if: github.event.pull_request.merged != 'true' && github.event.pull_request.state == 'closed'
     name: Run when PR closed
     runs-on: ubuntu-latest
     steps: 
@@ -28,10 +28,10 @@ jobs:
           echo "INFO: github.event_name"
           echo "${{ github.event_name }}"
           echo "INFO: github.ref"
-          echo "${{ github.ref }}" 
+          echo "${{ github.ref }}"  
 
   merge:
-    if: contains(github.ref, 'main') && github.event_name == 'push'
+    if: github.event.pull_request.merged == 'true' && github.event_name == 'push'
     name: Run when PR merged 
     runs-on: ubuntu-latest
     steps:
@@ -42,12 +42,12 @@ jobs:
           echo "INFO: github.event.action"
           echo "${{ github.event.action }}"
           echo "INFO: github.event_name"
-          echo "${{ github.event_name }}"
+          echo "${{ github.event_name }}" 
           echo "INFO: github.ref"
           echo "${{ github.ref }}" 
 
   pr-open-sync:
-    if: contains(github.ref, 'main') != 'true' && github.event.pull_request.state == 'open'
+    if: github.event.pull_request.merged != 'true' && github.event.pull_request.state == 'open'
     name: Run when PR is opened & synchronized
     runs-on: ubuntu-latest
     steps:
