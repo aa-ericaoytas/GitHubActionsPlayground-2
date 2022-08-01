@@ -10,7 +10,7 @@ on:
 env:
   APPLICATION_NAME: test-app
   TARGET_ENVIRONMENT: nonprod
-  STEP_ENABLED: true
+  STEP_ENABLED: false
 
 jobs:
   close:
