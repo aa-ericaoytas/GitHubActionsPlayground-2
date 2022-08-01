@@ -89,6 +89,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print something
-        if: ${{ env.STEP_ENABLED && github.ref != 'refs/heads/main' }}
+        if: ${{ env.STEP_ENABLED == true && github.ref != 'refs/heads/main' }}
         run: |
           echo "Hello"
