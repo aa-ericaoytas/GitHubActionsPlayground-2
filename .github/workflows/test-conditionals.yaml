@@ -10,6 +10,7 @@ on:
 env:
   APPLICATION_NAME: test-app
   TARGET_ENVIRONMENT: nonprod
+  STEP_ENABLED: false
 
 jobs:
   close:
@@ -82,3 +83,12 @@ jobs:
           echo "${{ github.event_name }}"
           echo "INFO: github.ref"
           echo "${{ github.ref }}" 
+
+  if-statements:
+    name: Test if statements on steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print something
+        if: ${{ env.STEP_ENABLED == true && github.ref != 'refs/heads/main' }}
+        run: |
+          echo "Hello"
